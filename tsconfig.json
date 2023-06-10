@@ -21,7 +21,10 @@
     "strictPropertyInitialization": false,
     "typeRoots": [
       "./node_modules/@types"
-    ]
+    ],
+    "rootDir": "src",
+    "outDir": "lib",
+    "skipLibCheck": true
   },
   "exclude": [
     "node_modules",
