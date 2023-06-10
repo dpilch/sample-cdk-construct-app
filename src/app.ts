@@ -3,7 +3,9 @@ import 'source-map-support/register';
 import * as cdk from 'aws-cdk-lib';
 import { AmplifyGraphQlApi } from 'agqlac';
 
-const stack = new cdk.Stack(new cdk.App(), 'BackendStack');
+const stack = new cdk.Stack(new cdk.App(), 'BackendStack', {
+  env: { region: 'us-west-2' }
+});
 
 new AmplifyGraphQlApi(stack, 'GraphqlApi', {
   apiName: 'MyGraphQLApi',

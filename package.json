@@ -14,7 +14,7 @@
     "aws-cdk-lib": "~2.68.0",
     "constructs": "^10.0.0",
     "source-map-support": "^0.5.21",
-    "agqlac": "0.1.0-agqlac.0"
+    "agqlac": "0.1.0-agqlac.1"
   },
   "devDependencies": {
     "@types/node": "18.14.2",
