@@ -6,7 +6,7 @@ backend:
         - npm ci
     build:
       commands:
-        - npm run deploy
+        - npm run deploy:backend
 frontend:
   phases:
     preBuild:
