@@ -1,9 +1,9 @@
 import { Construct } from 'constructs';
-import * as cdk from 'aws-cdk-lib';
+import { Stack, StackProps, Duration } from 'aws-cdk-lib';
 import { AmplifyGraphQlApi } from 'agqlac';
 
-export class BackendStack extends cdk.Stack {
-  constructor(scope: Construct, id: string, props?: cdk.StackProps) {
+export class BackendStack extends Stack {
+  constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props);
 
     new AmplifyGraphQlApi(this, 'GraphqlApi', {
@@ -14,7 +14,7 @@ export class BackendStack extends cdk.Stack {
         }
       `,
       authorizationModes: [
-        { type: 'API_KEY', expires: cdk.Duration.days(30) },
+        { type: 'API_KEY', expires: Duration.days(30) },
       ],
     });
   }

@@ -1,6 +1,7 @@
 node_modules
 build
 lib
+src/appConfig.ts
 
 # CDK asset staging directory
 .cdk.staging

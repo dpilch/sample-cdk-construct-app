@@ -1,6 +1,15 @@
-# Sample app using GraphQLApi CDK Construct
+# Getting Started
 
-[Sample Code](src/backend/app.ts)
+1. Flip to use your own github repo in the [backend-stack.ts](backend/stacks/deployment-stack.ts) file.
+1. Commit the change to your repo.
+1. Run `npm i`
+1. Create a github personal access token with permissions to read public repos (or wherever your repo is), and store that temporarily.
+1. Run `npm run deploy:secrets`. This will create a secret to store your github personal access token, and after deployment, set the value via the Amplify Console.
+1. Run `npm run deploy:amplify`. This will deploy the amplify app, that'll deploy the backend stack, and frontend app.
+
+## Example Usage
+
+* [Sample Code](backend/stacks/backend-stack.ts)
 
 ## Useful commands
 

@@ -1,35 +1,37 @@
 import { Construct } from 'constructs';
-import * as cdk from 'aws-cdk-lib';
-import * as iam from 'aws-cdk-lib/aws-iam';
-import * as secretsmanager from 'aws-cdk-lib/aws-secretsmanager';
-import * as amplify from '@aws-cdk/aws-amplify-alpha';
+import { Stack, StackProps } from 'aws-cdk-lib';
+import { Role, ServicePrincipal, ManagedPolicy } from 'aws-cdk-lib/aws-iam';
+import { Secret } from 'aws-cdk-lib/aws-secretsmanager';
+import { App, Branch, GitHubSourceCodeProvider } from '@aws-cdk/aws-amplify-alpha';
+
+export type DeploymentStackProps = StackProps & {
+  githubAccessToken: Secret;
+};
 
 /**
  * Deploy a service-linked-role for Amplify to use to deploy CDK,
  * then 
  */
-export class DeploymentStack extends cdk.Stack {
-  constructor(scope: Construct, id: string, props?: cdk.StackProps) {
+export class DeploymentStack extends Stack {
+  constructor(scope: Construct, id: string, props: DeploymentStackProps) {
     super(scope, id, props);
 
-    const serviceRole = new iam.Role(this, 'AmplifyServiceRole', {
-      assumedBy: new iam.ServicePrincipal('amplify.amazonaws.com'),
+    const serviceRole = new Role(this, 'AmplifyServiceRole', {
+      assumedBy: new ServicePrincipal('amplify.amazonaws.com'),
       managedPolicies: [
-        iam.ManagedPolicy.fromAwsManagedPolicyName('AdministratorAccess-Amplify'),
+        ManagedPolicy.fromAwsManagedPolicyName('AdministratorAccess-Amplify'),
       ],
     });
 
-    const githubAccessToken = new secretsmanager.Secret(this, 'GithubAccessToken');
-
-    const app = new amplify.App(this, 'AmplifyApp', {
-      sourceCodeProvider: new amplify.GitHubSourceCodeProvider({
+    const app = new App(this, 'AmplifyApp', {
+      sourceCodeProvider: new GitHubSourceCodeProvider({
         owner: 'aherschel',
         repository: 'sample-cdk-construct-app',
-        oauthToken: githubAccessToken.secretValue,
+        oauthToken: props.githubAccessToken.secretValue,
       }),
       role: serviceRole,
     });
 
-    new amplify.Branch(this, 'main', { app });
+    new Branch(this, 'main', { app });
   }
 }

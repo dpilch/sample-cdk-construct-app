@@ -5,7 +5,7 @@ import { listTodos } from './graphql/queries';
 import { onCreateTodo, onUpdateTodo, onDeleteTodo } from './graphql/subscriptions';
 import { useEffect, useState } from 'react';
 import { createTodo, deleteTodo } from './graphql/mutations';
-import * as appConfig from './appConfig';
+import appConfig from './appConfig';
 
 Amplify.configure(appConfig);
 
@@ -56,8 +56,9 @@ export const App = () => {
       <span onClick={() => createNewTodo()}>{' '}[Create]</span>
       <h3>About</h3>
       <ul>
-        <li>Backend Defined using the AmplifyGraphQLApi CDK Construct - <a href="https://github.com/aherschel/sample-cdk-construct-app/blob/main/src/app.ts">Source</a></li>
-        <li>Frontend Defined using the Amplify JS Lib, manually importing API - <a href="https://github.com/aherschel/sample-cdk-construct-app/blob/www/src/App.tsx">Source</a></li>
+        <li>Backend Defined using the AmplifyGraphQLApi CDK Construct - <a href="https://github.com/aherschel/sample-cdk-construct-app/blob/main/backend/stacks/backend-stack.ts">Source</a></li>
+        <li>Amplify Build Defined using the Amplify Experimental L2 CDK Constructs - <a href="https://github.com/aherschel/sample-cdk-construct-app/blob/main/backend/stacks/deployment-stack.ts">Source</a></li>
+        <li>Client Defined using the Amplify JS Lib, manually importing API - <a href="https://github.com/aherschel/sample-cdk-construct-app/blob/www/src/App.tsx">Source</a></li>
       </ul>
     </div>
   );
