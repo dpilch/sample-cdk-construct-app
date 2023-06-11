@@ -1,3 +1,15 @@
+# Sample app using GraphQLApi CDK Construct
+
+[Sample Code](src/backend/app.ts)
+
+## Useful commands
+
+* `npm run build`   compile typescript to js
+* `npm run watch`   watch for changes and compile
+* `npx cdk deploy`      deploy this stack to your default AWS account/region
+* `npx cdk diff`        compare deployed stack with current state
+* `npx cdk synth`       emits the synthesized CloudFormation template
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

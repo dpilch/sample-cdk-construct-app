@@ -1,2 +1,7 @@
 node_modules
 build
+lib
+
+# CDK asset staging directory
+.cdk.staging
+cdk.out
