@@ -1,3 +1,11 @@
+# Demo App
+
+This app is built using the AWS CDK, and deployed using Amplify Hosting.
+
+Hosting will build and push a `backend` stack, which is built on top of the Amplify GraphQL Transformer via a new CDK Construct.
+
+Live app can be found : https://main.d2kltgfz5xshwu.amplifyapp.com/
+
 # Getting Started
 
 1. Flip to use your own github repo in the [backend-stack.ts](backend/stacks/deployment-stack.ts) file.
